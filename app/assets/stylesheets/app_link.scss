@@ -1,0 +1,43 @@
+/*#one place*/
+.container {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: center;
+  padding: 46px;
+}
+.line-svg {
+  margin-right: 4px; /* Same as your 'mr-4' class */
+}
+p {
+    margin: 0;
+    color: grey;
+    font-size: 12px;
+}
+
+
+/*#app-links*/
+.link-button {
+  padding: 18px;
+  height: 26px;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: #4A5568; 
+  font-size: 13px;
+  line-height: 26px;
+  border: none;
+  background-color: #f9fafbbf;
+}
+.link-button:hover {
+  background-color: #f3f3f3; /* violet-50 */
+}
+.app-links {
+border: 0.5px solid grey;
+    border-radius: 50px;
+    padding: 1px 28px 1px 0px;
+    width: fit-content;
+    margin: 0 auto;
+}

@@ -1,0 +1,2 @@
+class WiseApp < ApplicationRecord
+end

@@ -1,0 +1,118 @@
+.one_stop {
+    margin-top: 138px;
+}
+.logo {
+    margin-left: -60px;
+}
+.nav-links .fas {
+    margin-right: 8px; 
+}
+
+.nav-links .fas.fa-text-width {
+  color: #ffffff;
+  display: inline-block;
+  background-color: #007BFF;
+  padding: 14px;
+  border-radius: 33%;
+
+}
+
+.nav-links .fas.fa-robot {
+  color: #ffffff;
+  display: inline-block;
+  background-color: #e99bd8;
+  padding: 14px;
+  border-radius: 33%;
+}
+.nav-links .fas.fa-project-diagram {
+  color: #ffffff;
+  display: inline-block;
+  background-color: #007BFF;
+  padding: 14px;
+  border-radius: 33%;
+}
+
+.nav-links .fas.fa-user-secret {
+  color: #ffffff;
+  display: inline-block;
+  background-color: #0dcaf03d;
+  padding: 14px;
+  border-radius: 33%;
+}
+p.features_text {
+  margin: -19px 50px 0px;
+  font-size: 12px;
+  font-weight: 300;
+}
+.htmlCss-sub-menu {
+  padding: 5px;
+  margin: 0;
+  border: 1px solid #ccc;
+  max-width: 260px;
+  border-radius: 19px;
+}
+.Launch_app {
+  border-radius: 50px;
+  font-size: 66px;
+  text-align: -webkit-center;
+}
+button.Launch {
+  color: white;
+  background: none;
+  border: 1px solid white;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: #2b42ebe0;;
+  font-size: 17px;
+    font-weight: 400;
+}
+.Launch_app_download {
+  color: black;
+  background: none;
+  border: 1px solid grey;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: white;
+      font-size: 16px;
+    font-weight: 300;
+}
+.linux_apple {
+  text-align: -webkit-center;
+  margin-left: 160px;
+  --tw-text-opacity: 1;
+  font-size: 25px;
+}
+.logo a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+button.logo_button {
+  background-color: white;
+  color: #0000ff8a;
+  border: 1px solid #80808038;
+  font-size: 11px;
+  padding: 3px 10px;
+  font-weight: 200;
+}
+
+
+/*#one place*/
+.container {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  justify-content: center;
+  padding: 46px;
+}
+.line-svg {
+  margin-right: 4px; /* Same as your 'mr-4' class */
+}
+p {
+    margin: 0;
+    color: grey;
+    font-size: 12px;
+}
