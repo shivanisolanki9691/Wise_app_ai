@@ -1,6 +1,6 @@
 ActiveAdmin.register WiseApp do
   menu priority: 1, label: "Wise Apps", parent: "Applications", icon: "fa fa-star"
-  permit_params :icon, :app_name, :discription, :app_type, :numbers_of_app
+  permit_params :icon, :app_name, :description, :app_type, :numbers_of_app
   index do
     selectable_column
     id_column

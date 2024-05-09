@@ -27,7 +27,6 @@ class AccountsController < ApplicationController
   end
 
 	def verify_otp
-		byebug
 	  # otp = params[:otp]
 	  @account = Account.find_by(email: params[:email], otp: params[:otp])
 	  if @account.present? && @account.otp == otp
@@ -47,6 +46,6 @@ class AccountsController < ApplicationController
   end
 
 	def account_params
-		params.require(:account).permit(:username, :email, :password, :otp)
+		params.require(:account).permit(:username, :email, :password)
 	end
 end

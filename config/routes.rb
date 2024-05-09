@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root 'wise_apps#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/wise_apps', to: 'wise_apps#index'
+  # resources :wise_apps
   
   post '/chat', to: 'chat#interact'
   resources :accounts
