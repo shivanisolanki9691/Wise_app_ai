@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_09_113832) do
+ActiveRecord::Schema.define(version: 2024_10_16_073056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2024_05_09_113832) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.string "otp"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "otp"
   end
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -78,6 +78,125 @@ ActiveRecord::Schema.define(version: 2024_05_09_113832) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "attendances", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.date "date"
+    t.time "clock_in"
+    t.time "clock_out"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_attendances_on_employee_id"
+  end
+
+  create_table "authentication_tokens", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_authentication_tokens_on_employee_id"
+  end
+
+  create_table "candidates", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.text "resume"
+    t.date "application_date"
+    t.bigint "recruitment_id", null: false
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_candidates_on_email", unique: true
+    t.index ["recruitment_id"], name: "index_candidates_on_recruitment_id"
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at", precision: 6
+    t.datetime "remember_created_at", precision: 6
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.date "hire_date"
+    t.decimal "salary"
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sign_in_count"
+    t.datetime "current_sign_in_at", precision: 6
+    t.datetime "last_sign_in_at", precision: 6
+    t.string "last_sign_in_ip"
+    t.string "current_sign_in_ip"
+    t.bigint "position_id", null: false
+    t.bigint "department_id", null: false
+    t.string "role"
+    t.index ["department_id"], name: "index_employees_on_department_id"
+    t.index ["email"], name: "index_employees_on_email", unique: true
+    t.index ["position_id"], name: "index_employees_on_position_id"
+    t.index ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
+  end
+
+  create_table "leaves", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.string "leave_type"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_leaves_on_employee_id"
+  end
+
+  create_table "payrolls", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.date "salary_date"
+    t.decimal "basic_salary"
+    t.decimal "bonus"
+    t.decimal "deductions"
+    t.decimal "net_salary"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_payrolls_on_employee_id"
+  end
+
+  create_table "performances", force: :cascade do |t|
+    t.bigint "employee_id", null: false
+    t.date "review_date"
+    t.integer "rating"
+    t.text "comments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_performances_on_employee_id"
+  end
+
+  create_table "positions", force: :cascade do |t|
+    t.string "title"
+    t.bigint "department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_positions_on_department_id"
+  end
+
+  create_table "recruitments", force: :cascade do |t|
+    t.string "job_title"
+    t.bigint "department_id", null: false
+    t.date "posting_date"
+    t.date "application_deadline"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_recruitments_on_department_id"
+  end
+
   create_table "wise_apps", force: :cascade do |t|
     t.string "icon"
     t.string "app_name"
@@ -90,4 +209,14 @@ ActiveRecord::Schema.define(version: 2024_05_09_113832) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "attendances", "employees"
+  add_foreign_key "authentication_tokens", "employees"
+  add_foreign_key "candidates", "recruitments"
+  add_foreign_key "employees", "departments"
+  add_foreign_key "employees", "positions"
+  add_foreign_key "leaves", "employees"
+  add_foreign_key "payrolls", "employees"
+  add_foreign_key "performances", "employees"
+  add_foreign_key "positions", "departments"
+  add_foreign_key "recruitments", "departments"
 end

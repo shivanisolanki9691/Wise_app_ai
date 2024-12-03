@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  resources :dashboard, only: [:index]
   root 'wise_apps#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/wise_apps', to: 'wise_apps#index'
